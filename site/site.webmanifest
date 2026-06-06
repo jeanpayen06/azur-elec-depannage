@@ -1,10 +1,10 @@
-{
+﻿{
   "name": "Azur Elec Depannage",
   "short_name": "Azur Elec",
   "description": "Electricien depannage et petits travaux dans les Alpes-Maritimes.",
   "lang": "fr-FR",
-  "start_url": "https://ismailhiko.github.io/azur-elec-depannage/",
-  "scope": "https://ismailhiko.github.io/azur-elec-depannage/",
+  "start_url": "https://www.xn--azur-lec-dpannage-ftbf.fr/",
+  "scope": "https://www.xn--azur-lec-dpannage-ftbf.fr/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0d2b5e"

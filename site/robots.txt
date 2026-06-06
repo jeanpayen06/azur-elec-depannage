@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://ismailhiko.github.io/azur-elec-depannage/sitemap.xml
+Sitemap: https://www.xn--azur-lec-dpannage-ftbf.fr/sitemap.xml
