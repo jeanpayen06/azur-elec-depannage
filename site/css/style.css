@@ -832,23 +832,27 @@ ul { list-style: none; }
 }
 
 .pricing__features {
+  display: grid;
+  gap: 0.45rem;
   margin-bottom: 2rem;
 }
 
 .pricing__features li {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid var(--gray-100);
-  font-size: 0.95rem;
-  color: var(--gray-700);
+  gap: 0.65rem;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--gray-100);
+  border-radius: 10px;
+  background: rgba(246, 248, 251, 0.72);
+  font-size: 0.88rem;
+  color: var(--gray-500);
 }
 
 .pricing__features svg {
-  width: 1.125rem;
-  height: 1.125rem;
-  color: var(--azure);
+  width: 0.95rem;
+  height: 0.95rem;
+  color: var(--gray-500);
   flex-shrink: 0;
 }
 
