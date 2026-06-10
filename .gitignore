@@ -12,6 +12,9 @@ site/build_questionnaire_docx.py
 site/questionnaire-contenu-client.md
 site/Questionnaire-contenu-Azur-Elec-Depannage.docx
 
+# Outillage local
+.claude/
+
 # Python / OS
 __pycache__/
 *.pyc
