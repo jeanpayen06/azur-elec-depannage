@@ -6,6 +6,7 @@
   const nav = document.getElementById('nav');
   const yearEl = document.getElementById('year');
   const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let ticking = false;
 
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
@@ -350,7 +351,6 @@
   /* Récit du hero piloté en continu par le scroll : chaque pixel de
      scroll fait évoluer l'intro, le visuel et la vidéo — dans les deux
      sens (on remonte, tout rembobine) */
-  const flatQuery = window.matchMedia('(max-width: 900px)');
   const heroIntroEl = hero ? hero.querySelector('.hero__intro') : null;
   const heroStoryEl = hero ? hero.querySelector('.hero__story') : null;
   const heroCardWrap = hero ? hero.querySelector('.hero__cardwrap') : null;
@@ -432,7 +432,7 @@
     /* La vidéo suit la progression sur toute la traversée du hero */
     scrubHeroVideo(p);
 
-    if (flatQuery.matches || motionQuery.matches) {
+    if (motionQuery.matches) {
       /* Layout empilé géré par le CSS : on retire tout pilotage inline */
       [heroIntroEl, heroStoryEl, heroCardWrap, heroSceneEl].forEach(function (el) {
         if (el) {
@@ -581,8 +581,6 @@
   }
 
   /* Boucle scroll unique (rAF) pour tous les effets liés au scroll */
-  let ticking = false;
-
   function onFrame() {
     ticking = false;
     const vh = window.innerHeight;
