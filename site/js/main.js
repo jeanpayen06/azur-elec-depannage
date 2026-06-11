@@ -154,6 +154,22 @@
       /* Reduced motion : pas de scrub, on fige sur l'ampoule allumée */
       if (motionQuery.matches) {
         heroVideo.currentTime = Math.max(0, heroVideoDuration - 0.08);
+        return;
+      }
+
+      /* iOS n'affiche pas les frames d'une vidéo jamais lue : on
+         l'amorce par une lecture muette immédiatement mise en pause */
+      const prime = heroVideo.play();
+
+      if (prime && prime.then) {
+        prime
+          .then(function () {
+            heroVideo.pause();
+            requestFrame();
+          })
+          .catch(function () {
+            requestFrame();
+          });
       } else {
         requestFrame();
       }
@@ -362,7 +378,17 @@
   /* Scène maison / téléphone : le courant se trace du téléphone au
      tableau puis à l'ampoule au fil des étapes */
   const sceneWire = hero ? hero.querySelector('.scene__wire') : null;
-  const sceneWireLen = sceneWire ? sceneWire.getTotalLength() : 0;
+  /* getTotalLength() lève une exception sur un SVG non rendu
+     (display:none) dans Safari et Firefox — longueur de repli mesurée */
+  let sceneWireLen = 380;
+
+  if (sceneWire) {
+    try {
+      sceneWireLen = sceneWire.getTotalLength();
+    } catch (e) {
+      /* scène masquée (mobile) : la valeur de repli suffit */
+    }
+  }
   const sceneBulbGlow = hero ? hero.querySelector('.scene__bulb-glow') : null;
   const sceneBulb = hero ? hero.querySelector('.scene__bulb') : null;
   const sceneLed = hero ? hero.querySelector('.scene__led') : null;
@@ -608,5 +634,15 @@
 
   window.addEventListener('scroll', requestFrame, { passive: true });
   window.addEventListener('resize', requestFrame, { passive: true });
+
+  /* Onglet remis au premier plan : un rAF a pu être avalé pendant la
+     suspension — on relance la boucle pour resynchroniser l'état */
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') {
+      ticking = false;
+      requestFrame();
+    }
+  });
+
   requestFrame();
 })();
