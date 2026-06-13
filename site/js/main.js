@@ -569,7 +569,7 @@
   }
 
   /* Compteur du prix : 0 → 125 à l'apparition */
-  const amountEl = document.querySelector('.pricing__amount');
+  const amountEl = document.querySelector('.pricing__amount-value');
 
   if (amountEl && 'IntersectionObserver' in window && !motionQuery.matches) {
     const target = parseInt(amountEl.textContent, 10);

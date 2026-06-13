@@ -1115,6 +1115,15 @@ ul { list-style: none; }
   min-width: 3ch;
 }
 
+.pricing__asterisk {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--azure);
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 0.1rem;
+}
+
 .pricing__currency {
   font-size: 1.25rem;
   font-weight: 600;
@@ -1333,6 +1342,11 @@ ul { list-style: none; }
   border-radius: 9px;
   box-shadow: 0 10px 24px rgba(8, 38, 83, 0.18);
   transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.examples__num svg {
+  width: 20px;
+  height: 20px;
 }
 
 .examples__item.is-lit .examples__num {
